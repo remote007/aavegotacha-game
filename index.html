@@ -61,6 +61,7 @@
         };
         var platforms;
         var player;
+        var cursor;
         //new game having config
         var game = new Phaser.Game(config);
         //Loading assets pic/movie/music
@@ -87,12 +88,35 @@
             this.physics.add.collider(player, platforms);
 
 
+            cursors = this.input.keyboard.createCursorKeys();
         }
         //60 times (frames) per second movement in a designed frame : game
         function update ()
         {
             // console.log("Update");
             //Check ? ex:  If bullet is hit then health decreased or not ?
+            if (cursors.left.isDown)
+            {
+                player.setVelocityX(-160);
+
+            
+            }
+            else if (cursors.right.isDown)
+            {
+                player.setVelocityX(160);
+
+        
+            }
+            else
+            {
+                player.setVelocityX(0);
+
+            }
+
+            if (cursors.up.isDown && player.body.touching.down)
+            {
+                player.setVelocityY(-330);
+            }
         }
     </script>
 </body>
