@@ -63,7 +63,21 @@
         var player;
         var cursor;
         //new game having config
-        var game = new Phaser.Game(config);
+        var game
+        (function launch(){
+            let user = Moralis.User.current();
+            if (!user) {
+                console.log("Please log in using MetaMask");
+            }
+            else {
+                console.log(user.get("ethAddress")+" "+"logged in");
+                // location.reload();
+                game = new Phaser.Game(config);
+            }
+        })()
+
+
+
         //Loading assets pic/movie/music
         function preload ()
         {
