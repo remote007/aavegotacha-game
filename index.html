@@ -50,7 +50,7 @@
                 default: 'arcade',
                 arcade: {
                     gravity: { y: 300 },// - means up on y ; x is for left or right
-                    debug: true //true to enable collision box, as player will be able to stand on top of it than img which'll look weird
+                    debug: false //true to enable collision box and keypress force direction
                 }
             },
             scene: {//functions below are called
@@ -83,7 +83,7 @@
             platforms.create(665, 400, 'ground').setScale(0.5).refreshBody();
 
             player = this.physics.add.sprite(490, 250, 'player').setScale(0.08).refreshBody();
-            player.setBounce(0.2);
+            player.setBounce(0.5);
             player.setCollideWorldBounds(true);
             this.physics.add.collider(player, platforms);
 
